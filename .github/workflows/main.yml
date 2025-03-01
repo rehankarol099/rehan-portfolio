@@ -42,3 +42,11 @@ jobs:
     - name: Sync build to S3
       run: |
         aws s3 sync ./dist/ s3://rehan-files/ --delete  # Replace with your S3 bucket name
+    
+    #Step 7:  
+    - name: Invalidate Cloudfront cache
+      run: |
+        aws cloudfront create-invalidation --distribution-id EAPL5LMXUAMXD --paths "/*"
+
+
+ 
